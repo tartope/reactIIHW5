@@ -1,0 +1,66 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    background: linear-gradient(to right, #00aaff, #00ff6c);
+}
+
+.calculator-grid{
+    /* Lines buttons up vertically */
+    display: grid;
+    margin-top: 2rem;
+    justify-content: center;
+    /* Makes 4 columns */
+    grid-template-columns: repeat(4, 6rem);
+    /* Determines height of different boxes; want first row at top to be 7rem or expand with auto as output box gets bigger */
+    grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+}
+
+.calculator-grid > button{
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.calculator-grid > button:hover,    
+.calculator-grid > button:focus{
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two{
+    /* Makes it so these buttons span 2 instead of just one */
+    grid-column: span 2;
+}
+
+.output{
+    /* Makes it span the entire top row */
+    grid-column: 1 / -1;
+    /* Makes it black but partially transparent */
+    background-color: rgba(0,0,0, .75);
+    /* Lays out the text inside */
+    display: flex;
+    /* Vertically stacks the text */
+    flex-direction: column;
+    align-items: flex-end;
+    /* Adds space around all output text */
+    justify-content: space-around;
+    /* Adds space around each output text */
+    padding: .75rem;
+    /* Makes it wrap if there's a really long output text */
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand{
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand{
+    color: white;
+    font-size: 2.5rem;
+}
